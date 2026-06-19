@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tower Hamlets Football Development — Football For Everyone, East London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060e19;--bg2:#0a1524;--bg3:#0f1e30;
+  --teal:#3EC9DA;--teal2:#2AAABB;--teal-faint:rgba(62,201,218,.07);
+  --gold:#E8FF3A;--white:#ECF6FF;--gray:#607d93;--bdr:rgba(62,201,218,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:3px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1.3rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s;}
+nav.up{background:rgba(6,14,25,.95);backdrop-filter:blur(14px);padding:1rem 2.5rem;border-bottom:1px solid var(--bdr);}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--teal);letter-spacing:3px;text-decoration:none;line-height:1;}
+.logo span{display:block;font-size:.52rem;letter-spacing:4px;color:var(--gray);font-family:'Outfit',sans-serif;font-weight:500;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--white);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;opacity:.7;transition:all .2s;}
+.nav-links a:hover{opacity:1;color:var(--teal);}
+.nav-cta{background:var(--teal)!important;color:var(--bg)!important;padding:.5rem 1.3rem;border-radius:5px;font-weight:700!important;opacity:1!important;}
+.nav-cta:hover{background:var(--gold)!important;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.burger span{width:22px;height:2px;background:var(--white);border-radius:2px;display:block;}
+.mob{display:none;position:fixed;inset:0;background:var(--bg);z-index:998;flex-direction:column;justify-content:center;align-items:center;gap:2rem;}
+.mob.on{display:flex;}
+.mob a{color:var(--white);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:4px;}
+.mob a:hover{color:var(--teal);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 2.5rem 5rem;position:relative;overflow:hidden;}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(var(--bdr) 1px,transparent 1px),linear-gradient(90deg,var(--bdr) 1px,transparent 1px);background-size:60px 60px;}
+.h-glow{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(62,201,218,.06) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--teal);color:var(--teal);font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:1.8rem;}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,13vw,13rem);line-height:.88;letter-spacing:-1px;}
+.hero-title .t{color:var(--teal);display:block;}
+.hero-sub{font-size:clamp(.9rem,1.6vw,1.15rem);color:var(--gray);max-width:560px;margin-top:1.6rem;line-height:1.75;font-weight:300;}
+.hero-sub strong{color:var(--white);}
+.hero-btns{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;}
+.btn-t{background:var(--teal);color:var(--bg);padding:.95rem 2.3rem;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-t:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-o{background:transparent;color:var(--white);padding:.95rem 2.3rem;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-o:hover{border-color:var(--teal);color:var(--teal);}
+.hero-tags{display:flex;gap:.6rem;margin-top:2rem;flex-wrap:wrap;}
+.htag{background:rgba(62,201,218,.08);border:1px solid var(--bdr);color:var(--teal);font-size:.72rem;font-weight:600;padding:.35rem .85rem;border-radius:100px;letter-spacing:1px;}
+
+/* TRUST STRIP */
+.trust{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:1rem 2.5rem;}
+.trust-inner{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;justify-content:center;}
+.trust-item{display:flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);white-space:nowrap;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+
+/* SHARED */
+section{padding:6rem 2.5rem;}
+.wrap{max-width:1180px;margin:0 auto;}
+.lbl{font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:.9rem;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);line-height:1;margin-bottom:1.2rem;}
+.sec-desc{color:var(--gray);font-size:1rem;line-height:1.8;max-width:520px;}
+.fade{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.fade.in{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* SESSIONS */
+#sessions{background:var(--bg2);}
+.sess-cat{margin-bottom:3.5rem;}
+.sess-cat-title{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.sess-cat-title h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:1px;}
+.sess-cat-title .cat-tag{background:rgba(62,201,218,.1);color:var(--teal);font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .85rem;border-radius:100px;}
+.sess-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.3rem;}
+.sess-card{background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
+.sess-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);opacity:0;transition:.25s;}
+.sess-card:hover{border-color:var(--teal);transform:translateY(-3px);}
+.sess-card:hover::before{opacity:1;}
+.sess-card.highlight{border-color:rgba(62,201,218,.3);}
+.sess-card.highlight::before{opacity:.5;}
+.sess-ico{font-size:2rem;margin-bottom:.9rem;}
+.sess-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;line-height:1;margin-bottom:.3rem;}
+.sess-sub{color:var(--teal);font-size:.82rem;font-weight:600;margin-bottom:1rem;}
+.sess-body{color:var(--gray);font-size:.82rem;line-height:1.65;}
+.sess-who{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--bdr);}
+.sess-who-lbl{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:.4rem;}
+.sess-pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.35rem;}
+.sess-pill{background:rgba(62,201,218,.07);color:var(--teal);font-size:.68rem;font-weight:600;padding:.2rem .6rem;border-radius:100px;}
+.fa-badge{display:inline-block;margin-top:1rem;background:var(--bg2);border:1px solid var(--bdr);color:var(--gray);font-size:.68rem;font-weight:600;letter-spacing:1px;padding:.3rem .75rem;border-radius:5px;}
+
+/* WALKING FOOTBALL CALLOUT */
+.walk-callout{background:linear-gradient(135deg,rgba(62,201,218,.08) 0%,rgba(232,255,58,.04) 100%);border:1px solid var(--bdr);border-radius:20px;padding:2.5rem;margin:2rem 0;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.walk-callout h3{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;margin-bottom:.8rem;}
+.walk-callout h3 span{color:var(--teal);}
+.walk-callout p{color:var(--gray);font-size:.9rem;line-height:1.75;}
+.walk-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
+.walk-tag{background:rgba(62,201,218,.1);color:var(--teal);font-size:.72rem;font-weight:600;padding:.3rem .8rem;border-radius:100px;}
+.walk-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.walk-stat{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:1.2rem;text-align:center;}
+.walk-stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--teal);line-height:1;}
+.walk-stat-l{font-size:.72rem;color:var(--gray);margin-top:.25rem;line-height:1.4;}
+
+/* CREDENTIALS */
+#credentials{background:var(--bg);}
+.cred-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1rem;margin-top:2.5rem;}
+.cred-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:1rem 1.1rem;display:flex;align-items:flex-start;gap:.7rem;transition:border-color .2s,transform .2s;}
+.cred-card:hover{border-color:var(--teal);transform:translateY(-2px);}
+.cred-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.cred-name{font-size:.78rem;font-weight:600;line-height:1.4;color:var(--white);}
+.cred-org{font-size:.68rem;color:var(--gray);margin-top:2px;}
+
+/* PRICING */
+#pricing{background:var(--bg2);}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;margin-top:2.5rem;}
+.price-card{background:var(--bg3);border:1px solid var(--bdr);border-radius:18px;padding:2rem;position:relative;overflow:hidden;}
+.price-card.hot{border-color:var(--teal);}
+.price-card.hot::before{content:'';position:absolute;top:0;left:0;right:0;height:160px;background:radial-gradient(ellipse at 50% 0%,rgba(62,201,218,.09) 0%,transparent 70%);}
+.price-pill{display:inline-block;font-size:.67rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1.3rem;position:relative;z-index:1;}
+.price-pill.main{background:var(--teal);color:var(--bg);}
+.price-pill.free{background:var(--bg2);color:var(--gray);border:1px solid var(--bdr);}
+.price-pill.walk{background:rgba(232,255,58,.15);color:var(--gold);}
+.price-pill.dis{background:rgba(160,100,255,.15);color:#c084fc;}
+.p-num{font-family:'Bebas Neue',sans-serif;line-height:1;position:relative;z-index:1;}
+.p-sym{font-size:2rem;color:var(--teal);vertical-align:top;margin-top:.8rem;display:inline-block;}
+.p-big{font-size:6rem;color:var(--white);}
+.p-free{font-size:2.5rem;color:var(--gray);line-height:1.2;}
+.p-mo{color:var(--gray);font-size:.85rem;margin-top:.2rem;position:relative;z-index:1;}
+.p-list{list-style:none;margin:1.5rem 0;position:relative;z-index:1;}
+.p-list li{display:flex;align-items:flex-start;gap:.65rem;padding:.5rem 0;border-bottom:1px solid var(--bdr);font-size:.84rem;line-height:1.5;}
+.p-list li:last-child{border-bottom:none;}
+.ck{color:var(--teal);font-weight:700;flex-shrink:0;}
+
+/* ENQUIRY FORM */
+#enquiry{background:var(--bg);}
+.enq-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;}
+.enq-info p{color:var(--gray);font-size:.95rem;line-height:1.8;margin-top:1rem;}
+.enq-perks{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem;}
+.enq-perk{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem;color:var(--gray);line-height:1.5;}
+.enq-perk .jc{color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
+.email-box{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.5rem;margin-top:2rem;}
+.email-box p{font-size:.82rem;color:var(--gray);line-height:1.7;}
+.email-box strong{color:var(--white);}
+.email-box a{color:var(--teal);font-weight:600;}
+
+/* FORM */
+.enq-form{display:flex;flex-direction:column;gap:1.1rem;}
+.fgrp{display:flex;flex-direction:column;gap:.4rem;}
+.fgrp.half-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.flbl{font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);}
+.finp,.fsel,.ftxt{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;padding:.85rem 1.1rem;color:var(--white);font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;width:100%;}
+.finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--teal);}
+.fsel option{background:var(--bg2);}
+.ftxt{resize:vertical;min-height:100px;}
+.finp::placeholder,.ftxt::placeholder{color:var(--gray);opacity:.55;}
+.consent-row{display:flex;align-items:flex-start;gap:.75rem;padding:.8rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;}
+.consent-row input[type=checkbox]{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--teal);}
+.consent-row label{font-size:.8rem;color:var(--gray);line-height:1.5;}
+.note-box{background:rgba(232,255,58,.05);border:1px solid rgba(232,255,58,.15);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:var(--gray);line-height:1.6;}
+.note-box strong{color:var(--gold);}
+.form-sent{display:none;background:rgba(62,201,218,.1);border:1px solid var(--teal);color:var(--teal);padding:1rem;border-radius:8px;text-align:center;font-weight:600;font-size:.88rem;margin-top:.5rem;}
+
+/* IG / WA */
+.social-band{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:5rem 2.5rem;text-align:center;}
+.social-band h3{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;margin-bottom:.8rem;}
+.social-band p{color:var(--gray);margin-bottom:2rem;font-size:.92rem;}
+.social-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;}
+.ig-btn{display:inline-flex;align-items:center;gap:.7rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:.85rem;transition:all .2s;}
+.ig-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(220,39,67,.3);}
+.wa-btn{display:inline-flex;align-items:center;gap:.7rem;background:#25D366;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:.85rem;transition:all .2s;}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(37,211,102,.3);}
+.em-btn{display:inline-flex;align-items:center;gap:.7rem;background:var(--bg3);border:1px solid var(--bdr);color:var(--teal);padding:.9rem 2rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:.85rem;transition:all .2s;}
+.em-btn:hover{border-color:var(--teal);transform:translateY(-3px);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;}
+.ft-top{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.ft-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--teal);letter-spacing:3px;}
+.ft-logo span{display:block;font-size:.5rem;letter-spacing:4px;color:var(--gray);font-family:'Outfit',sans-serif;font-weight:500;}
+.ft-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap;}
+.ft-links a{color:var(--gray);text-decoration:none;font-size:.8rem;transition:color .2s;}
+.ft-links a:hover{color:var(--teal);}
+.ft-copy{max-width:1180px;margin:2rem auto 0;padding-top:2rem;border-top:1px solid var(--bdr);text-align:center;color:var(--gray);font-size:.75rem;line-height:1.8;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .walk-callout,.enq-grid{grid-template-columns:1fr;gap:2.5rem;}
+}
+@media(max-width:680px){
+  section{padding:4rem 1.4rem;}
+  nav{padding:1.1rem 1.4rem;}
+  nav.up{padding:.9rem 1.4rem;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .hero{padding:7rem 1.4rem 4rem;}
+  .fgrp.half-row{grid-template-columns:1fr;}
+  .ft-top{justify-content:center;text-align:center;}
+  .ft-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">THFD<span>Tower Hamlets Football Development</span></a>
+  <ul class="nav-links">
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#credentials">Qualified</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#enquiry" class="nav-cta">Enquire Now</a></li>
+  </ul>
+  <div class="burger" id="burger" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mob">
+  <a href="#sessions" onclick="toggleMob()">Sessions</a>
+  <a href="#credentials" onclick="toggleMob()">Qualified</a>
+  <a href="#pricing" onclick="toggleMob()">Pricing</a>
+  <a href="#enquiry" class="btn-t" onclick="toggleMob()">Enquire Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-grid"></div>
+  <div class="h-glow"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="hero-badge">⚽ Sessions Open · Tower Hamlets, E1</div>
+    <h1 class="hero-title">
+      Tower<br>Hamlets<br>
+      <span class="t">Football</span>
+    </h1>
+    <p class="hero-sub">East London's most inclusive grassroots football club. <strong>All ages. All abilities. All welcome.</strong> Children, adults, 50+, disability, walking football, mental health &amp; wellbeing sessions — led by a UEFA C Licence coach.</p>
+    <div class="hero-btns">
+      <a href="#enquiry" class="btn-t">Send an Enquiry</a>
+      <a href="#sessions" class="btn-o">See All Sessions</a>
+    </div>
+    <div class="hero-tags">
+      <span class="htag">⚽ All Ages</span>
+      <span class="htag">♿ Disability Sessions</span>
+      <span class="htag">🚶 Walking Football</span>
+      <span class="htag">🧠 Mental Wellbeing</span>
+      <span class="htag">🩺 Diabetic Friendly</span>
+      <span class="htag">👧 Girls &amp; Women</span>
+      <span class="htag">🏆 UEFA C Coach</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="dot"></span>England Football Registered · CS100760</div>
+    <div class="trust-item"><span class="dot"></span>UEFA C Licence Coach</div>
+    <div class="trust-item"><span class="dot"></span>Enhanced DBS Checked</div>
+    <div class="trust-item"><span class="dot"></span>FA Safeguarding Certified</div>
+    <div class="trust-item"><span class="dot"></span>FA First Aid in Football</div>
+    <div class="trust-item"><span class="dot"></span>Disability Football Qualified</div>
+  </div>
+</div>
+
+<!-- SESSIONS -->
+<section id="sessions">
+  <div class="wrap">
+    <p class="lbl fade">What We Offer</p>
+    <h2 class="sec-title fade">Sessions For Everyone</h2>
+    <p class="sec-desc fade">Every session is led by a fully qualified UEFA C Licence coach. We don't just run a kickabout — we run properly structured, safe, inclusive football for every type of player in Tower Hamlets.</p>
+
+    <!-- WALKING FOOTBALL CALLOUT -->
+    <div class="walk-callout fade" style="margin-top:2.5rem;">
+      <div>
+        <p class="lbl">Featured Programme</p>
+        <h3><span>Walking</span><br>Football</h3>
+        <p>Our walking football sessions are specially designed for people with health conditions, older adults, and anyone who wants to enjoy football at a gentler pace. No running required — but the teamwork, the tactics, and the fun are all still there.</p>
+        <div class="walk-tags">
+          <span class="walk-tag">🩺 Diabetic Friendly</span>
+          <span class="walk-tag">🧠 Anxiety &amp; Mental Health</span>
+          <span class="walk-tag">🫀 Heart Conditions</span>
+          <span class="walk-tag">🦵 Limited Mobility</span>
+          <span class="walk-tag">50+ Welcome</span>
+          <span class="walk-tag">All Genders</span>
+        </div>
+        <a href="#enquiry" class="btn-t" style="display:inline-block;margin-top:1.5rem;">Enquire About Walking Football</a>
+      </div>
+      <div class="walk-stats">
+        <div class="walk-stat">
+          <div class="walk-stat-n">50+</div>
+          <div class="walk-stat-l">Age group especially welcome</div>
+        </div>
+        <div class="walk-stat">
+          <div class="walk-stat-n">0</div>
+          <div class="walk-stat-l">Running required — walk the whole game</div>
+        </div>
+        <div class="walk-stat">
+          <div class="walk-stat-n">NHS</div>
+          <div class="walk-stat-l">Recommended for Type 2 Diabetes</div>
+        </div>
+        <div class="walk-stat">
+          <div class="walk-stat-n">🧠</div>
+          <div class="walk-stat-l">Proven to reduce anxiety &amp; isolation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUNIOR SESSIONS -->
+    <div class="sess-cat" style="margin-top:3.5rem;">
+      <div class="sess-cat-title fade">
+        <h3>🧒 Junior Sessions</h3>
+        <span class="cat-tag">Ages 5–17 · Parental Consent Required</span>
+      </div>
+      <div class="sess-grid">
+        <div class="sess-card fade">
+          <div class="sess-ico">🐱</div>
+          <div class="sess-name">FA Wildcats</div>
+          <div class="sess-sub">Non-competitive girls football</div>
+          <div class="sess-body">Fun, non-competitive football sessions helping girls try football for the first time or play with friends their own age. All about confidence and enjoyment.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">Girls</span><span class="sess-pill">Ages 5–11</span><span class="sess-pill">Beginners</span></div>
+          </div>
+          <span class="fa-badge">✅ FA Wildcats Certified Provider</span>
+        </div>
+        <div class="sess-card fade d1">
+          <div class="sess-ico">⚡</div>
+          <div class="sess-name">Squad Girls Football</div>
+          <div class="sess-sub">Fun &amp; pressure-free</div>
+          <div class="sess-body">A fun, pressure-free environment for girls to be active, socialise and enjoy the game. Squad Girls Football gives every girl a voice and a choice to play their game, their way.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">Girls</span><span class="sess-pill">Ages 11–16</span><span class="sess-pill">All Abilities</span></div>
+          </div>
+          <span class="fa-badge">✅ FA Squad Girls Certified Provider</span>
+        </div>
+        <div class="sess-card fade d2">
+          <div class="sess-ico">🎬</div>
+          <div class="sess-name">Disney Shooting Stars</div>
+          <div class="sess-sub">Creative &amp; confidence-building</div>
+          <div class="sess-body">Disney-inspired creative football sessions that build girls' confidence, coordination and love for the game through fun, imaginative activities.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">Girls</span><span class="sess-pill">Ages 5–11</span><span class="sess-pill">Beginners</span></div>
+          </div>
+          <span class="fa-badge">✅ FA Disney Shooting Stars Provider</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADULT SESSIONS -->
+    <div class="sess-cat">
+      <div class="sess-cat-title fade">
+        <h3>⚽ Adult Sessions</h3>
+        <span class="cat-tag">Ages 18+ · All Abilities</span>
+      </div>
+      <div class="sess-grid">
+        <div class="sess-card highlight fade">
+          <div class="sess-ico">🎮</div>
+          <div class="sess-name">Kickabout 18+</div>
+          <div class="sess-sub">Informal · Just Play</div>
+          <div class="sess-body">Put the ball into an informal game. No pressure, no judgment. Suitable for all — whether you already play, are returning, or are trying for the very first time.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">18+</span><span class="sess-pill">Males</span><span class="sess-pill">Females</span><span class="sess-pill">Mixed</span><span class="sess-pill">Disabled</span></div>
+          </div>
+          <span class="fa-badge">✅ Live on England Football · Book Now</span>
+        </div>
+        <div class="sess-card highlight fade d1">
+          <div class="sess-ico">🎓</div>
+          <div class="sess-name">Learn to Play 18+</div>
+          <div class="sess-sub">Coach-Led Skills &amp; Game</div>
+          <div class="sess-body">Coach-led sessions focusing on passing, shooting, movement and positioning — then time to put it all into practice in a game. Perfect for newcomers or those returning after a break.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">18+</span><span class="sess-pill">Beginners</span><span class="sess-pill">Returning Players</span><span class="sess-pill">All Genders</span></div>
+          </div>
+          <span class="fa-badge">✅ Live on England Football · Book Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WALKING & WELLBEING -->
+    <div class="sess-cat">
+      <div class="sess-cat-title fade">
+        <h3>🚶 Walking Football &amp; Wellbeing</h3>
+        <span class="cat-tag">All Ages · Health-Focused</span>
+      </div>
+      <div class="sess-grid">
+        <div class="sess-card fade">
+          <div class="sess-ico">🚶</div>
+          <div class="sess-name">Walking Football</div>
+          <div class="sess-sub">No Running · All Welcome</div>
+          <div class="sess-body">Football played at walking pace. All the strategy, teamwork and enjoyment — without the physical strain. Specifically recommended for Type 2 Diabetes management by Diabetes UK and the NHS.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Especially beneficial for</div>
+            <div class="sess-pills"><span class="sess-pill">50+</span><span class="sess-pill">Diabetic Players</span><span class="sess-pill">Heart Conditions</span><span class="sess-pill">Limited Mobility</span><span class="sess-pill">Post-Injury</span></div>
+          </div>
+        </div>
+        <div class="sess-card fade d1">
+          <div class="sess-ico">🧠</div>
+          <div class="sess-name">Mental Wellbeing Sessions</div>
+          <div class="sess-sub">Football &amp; Mental Health</div>
+          <div class="sess-body">Football is proven to reduce anxiety, combat isolation and improve mental health. These sessions provide a safe, welcoming space for anyone experiencing anxiety, depression or simply needing community and connection.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Especially beneficial for</div>
+            <div class="sess-pills"><span class="sess-pill">Anxiety</span><span class="sess-pill">Depression</span><span class="sess-pill">Social Isolation</span><span class="sess-pill">All Ages</span></div>
+          </div>
+          <span class="fa-badge">✅ FA "The Greater Game" Certified Coach</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISABILITY SESSIONS -->
+    <div class="sess-cat">
+      <div class="sess-cat-title fade">
+        <h3>♿ Disability Sessions</h3>
+        <span class="cat-tag">All Ages · Pan-Disability</span>
+      </div>
+      <div class="sess-grid">
+        <div class="sess-card fade">
+          <div class="sess-ico">⭐</div>
+          <div class="sess-name">FA Comets</div>
+          <div class="sess-sub">Pan-Disability · Recreational</div>
+          <div class="sess-body">Comets is a recreational, pan-disability football programme focusing on playfulness and giving everyone a fun, positive experience of football. No ability is too limited to take part.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">All Ages</span><span class="sess-pill">Physical Disability</span><span class="sess-pill">Learning Disability</span><span class="sess-pill">Sensory Impairment</span><span class="sess-pill">SEND</span></div>
+          </div>
+          <span class="fa-badge">✅ FA Comets Certified Provider</span>
+        </div>
+        <div class="sess-card fade d1">
+          <div class="sess-ico">♿</div>
+          <div class="sess-name">Disability Rec Centre</div>
+          <div class="sess-sub">Competitive Disability Football</div>
+          <div class="sess-body">England Football Disability Rec sessions giving players with disabilities the chance to play in a structured, competitive-but-welcoming environment with proper coaching and development.</div>
+          <div class="sess-who">
+            <div class="sess-who-lbl">Who is this for?</div>
+            <div class="sess-pills"><span class="sess-pill">Ages 12–16</span><span class="sess-pill">Disability</span><span class="sess-pill">SEND</span><span class="sess-pill">All Genders</span></div>
+          </div>
+          <span class="fa-badge">✅ FA Disability Football Qualified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="wrap">
+    <p class="lbl fade">Why Trust Us</p>
+    <h2 class="sec-title fade">Properly Qualified</h2>
+    <p class="sec-desc fade">Every session is led by a coach holding 20+ FA and FIFA certifications — including UEFA C Licence, disability football, safeguarding, first aid, and mental health qualifications. No other grassroots club in Tower Hamlets comes close.</p>
+    <div class="cred-grid">
+      <div class="cred-card fade"><span class="cred-icon">🏆</span><div><div class="cred-name">UEFA C Licence</div><div class="cred-org">FA / UEFA · 2025–2026</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">🛡️</span><div><div class="cred-name">Enhanced DBS Checked</div><div class="cred-org">The FA</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">🚑</span><div><div class="cred-name">First Aid in Football (IFAiF)</div><div class="cred-org">The FA · Valid Dec 2027</div></div></div>
+      <div class="cred-card fade"><span class="cred-icon">❤️</span><div><div class="cred-name">Sudden Cardiac Arrest</div><div class="cred-org">The FA · Oct 2025</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">🔒</span><div><div class="cred-name">Safeguarding Children</div><div class="cred-org">The FA · Valid Dec 2026</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">🔒</span><div><div class="cred-name">Safeguarding Adults</div><div class="cred-org">The FA · Mar 2026</div></div></div>
+      <div class="cred-card fade"><span class="cred-icon">🔒</span><div><div class="cred-name">Safeguarding For All</div><div class="cred-org">The FA · Valid Oct 2026</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">🔒</span><div><div class="cred-name">Safeguarding Committee Members</div><div class="cred-org">The FA · Mar 2026</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">♿</span><div><div class="cred-name">Coaching Disabled Footballers</div><div class="cred-org">The FA · Nov 2025</div></div></div>
+      <div class="cred-card fade"><span class="cred-icon">♿</span><div><div class="cred-name">Disability Football Introduction</div><div class="cred-org">The FA · Nov 2025</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">🧠</span><div><div class="cred-name">The Greater Game</div><div class="cred-org">FA · Football &amp; Mental Health</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">⭐</span><div><div class="cred-name">FA Comets Provider</div><div class="cred-org">The FA / Premier League · 2026</div></div></div>
+      <div class="cred-card fade"><span class="cred-icon">🐱</span><div><div class="cred-name">FA Wildcats Provider</div><div class="cred-org">The FA · Girls 5–11</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">⚡</span><div><div class="cred-name">FA Squad Girls Football</div><div class="cred-org">The FA · Girls 11–16</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">🎬</span><div><div class="cred-name">Disney Shooting Stars</div><div class="cred-org">The FA / Disney · Nov 2025</div></div></div>
+      <div class="cred-card fade"><span class="cred-icon">🔍</span><div><div class="cred-name">FA Talent Identification</div><div class="cred-org">The FA · Dec 2024</div></div></div>
+      <div class="cred-card fade d1"><span class="cred-icon">🌍</span><div><div class="cred-name">FIFA Art of Talent ID</div><div class="cred-org">FIFA Training Centre · Dec 2025</div></div></div>
+      <div class="cred-card fade d2"><span class="cred-icon">📡</span><div><div class="cred-name">STAT Sports GPS Monitoring</div><div class="cred-org">STAT Sports · Apr 2026</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <p class="lbl fade" style="text-align:center">Membership</p>
+    <h2 class="sec-title fade" style="text-align:center">Simple &amp; Fair Pricing</h2>
+    <p class="sec-desc fade" style="margin:0 auto 2.5rem;text-align:center">Every session is affordable. First session is always free. Enquire for concession rates.</p>
+    <div class="price-grid">
+      <div class="price-card fade">
+        <div class="price-pill free">England Football</div>
+        <div class="p-num"><span class="p-free">Pay Per<br>Session</span></div>
+        <p class="p-mo">Book via book.englandfootball.com</p>
+        <ul class="p-list" style="margin-top:1.3rem;">
+          <li><span class="ck">✓</span>Kickabout 18+ sessions</li>
+          <li><span class="ck">✓</span>Learn to Play 18+ sessions</li>
+          <li><span class="ck">✓</span>FA insured &amp; registered</li>
+          <li><span class="ck">✓</span>No commitment</li>
+        </ul>
+        <a href="https://book.englandfootball.com" target="_blank" class="btn-o" style="width:100%;text-align:center;display:block">Book on England Football</a>
+      </div>
+      <div class="price-card hot fade d1">
+        <div class="price-pill main">Monthly Membership</div>
+        <div class="p-num"><span class="p-sym">£</span><span class="p-big">15</span></div>
+        <p class="p-mo">per player · per month</p>
+        <ul class="p-list">
+          <li><span class="ck">✓</span>All weekly sessions included</li>
+          <li><span class="ck">✓</span>Club WhatsApp group</li>
+          <li><span class="ck">✓</span>Match days &amp; fixtures</li>
+          <li><span class="ck">✓</span>UEFA C Licence coaching</li>
+          <li><span class="ck">✓</span>First session FREE</li>
+          <li><span class="ck">✓</span>Cancel anytime</li>
+        </ul>
+        <a href="#enquiry" class="btn-t" style="width:100%;text-align:center;display:block">Sign Up Free Today</a>
+      </div>
+      <div class="price-card fade d2">
+        <div class="price-pill walk">Walking Football</div>
+        <div class="p-num"><span class="p-free">Enquire<br>For Rate</span></div>
+        <p class="p-mo">Concessions available</p>
+        <ul class="p-list" style="margin-top:1.3rem;">
+          <li><span class="ck">✓</span>Walking Football sessions</li>
+          <li><span class="ck">✓</span>Mental wellbeing sessions</li>
+          <li><span class="ck">✓</span>Diabetic-friendly pace</li>
+          <li><span class="ck">✓</span>50+ welcome</li>
+        </ul>
+        <a href="#enquiry" class="btn-o" style="width:100%;text-align:center;display:block">Enquire Now</a>
+      </div>
+      <div class="price-card fade d3">
+        <div class="price-pill dis">Disability Sessions</div>
+        <div class="p-num"><span class="p-free">Enquire<br>For Rate</span></div>
+        <p class="p-mo">Concessions available</p>
+        <ul class="p-list" style="margin-top:1.3rem;">
+          <li><span class="ck">✓</span>FA Comets pan-disability</li>
+          <li><span class="ck">✓</span>Disability Rec sessions</li>
+          <li><span class="ck">✓</span>Wildcats &amp; Squad Girls</li>
+          <li><span class="ck">✓</span>All disabilities welcome</li>
+        </ul>
+        <a href="#enquiry" class="btn-o" style="width:100%;text-align:center;display:block">Enquire Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY FORM — all submissions go to enquiry.davinchi@gmail.com via FormSubmit -->
+<section id="enquiry">
+  <div class="wrap">
+    <div class="enq-grid">
+      <div class="fade">
+        <p class="lbl">Get In Touch</p>
+        <h2 class="sec-title">Send an<br>Enquiry</h2>
+        <p style="color:var(--gray);font-size:.95rem;line-height:1.8;margin-top:1rem;">All messages go directly to Toufik. Whether you want to sign up, ask a question, enquire about a specific session type, or find out about concession rates — just fill in the form and he'll reply within 48 hours.</p>
+        <div class="enq-perks">
+          <div class="enq-perk"><span class="jc">✓</span><span>All ages welcome — children, adults, 50+</span></div>
+          <div class="enq-perk"><span class="jc">✓</span><span>Disability, walking football, wellbeing sessions available</span></div>
+          <div class="enq-perk"><span class="jc">✓</span><span>First trial session completely free</span></div>
+          <div class="enq-perk"><span class="jc">✓</span><span>Reply within 48 hours guaranteed</span></div>
+          <div class="enq-perk"><span class="jc">✓</span><span>Concession rates available — just ask</span></div>
+        </div>
+        <div class="email-box">
+          <p>📧 All enquiries go directly to <strong>enquiry.davinchi@gmail.com</strong><br>You can also email Toufik directly at any time.</p>
+        </div>
+      </div>
+
+      <!-- FORMSUBMIT FORM — sends directly to enquiry.davinchi@gmail.com -->
+      <div class="fade d1">
+        <form class="enq-form" action="https://formsubmit.co/enquiry.davinchi@gmail.com" method="POST">
+
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="New Enquiry — Tower Hamlets Football Development">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_autoresponse" value="Hi! Thank you for your enquiry to Tower Hamlets Football Development. Toufik will be in touch within 48 hours. ⚽ We look forward to seeing you on the pitch!">
+
+          <div class="fgrp half-row">
+            <div>
+              <label class="flbl">Full Name *</label>
+              <input type="text" name="Full Name" class="finp" placeholder="Your name" required>
+            </div>
+            <div>
+              <label class="flbl">Age Group *</label>
+              <select name="Age Group" class="fsel" required>
+                <option value="">Select age...</option>
+                <optgroup label="Junior (Under 18)">
+                  <option>Under 5</option>
+                  <option>5 – 7</option>
+                  <option>8 – 10</option>
+                  <option>11 – 13</option>
+                  <option>14 – 17</option>
+                </optgroup>
+                <optgroup label="Adult (18+)">
+                  <option>18 – 25</option>
+                  <option>25 – 35</option>
+                  <option>35 – 50</option>
+                  <option>50+</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <div class="fgrp half-row">
+            <div>
+              <label class="flbl">Email Address *</label>
+              <input type="email" name="Email" class="finp" placeholder="your@email.com" required>
+            </div>
+            <div>
+              <label class="flbl">Phone Number</label>
+              <input type="tel" name="Phone" class="finp" placeholder="07700 000 000">
+            </div>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl">Session Interested In *</label>
+            <select name="Session Type" class="fsel" required>
+              <option value="">Select session type...</option>
+              <optgroup label="Adult Sessions (18+)">
+                <option>Kickabout 18+ (informal game)</option>
+                <option>Learn to Play 18+ (coached sessions)</option>
+              </optgroup>
+              <optgroup label="Walking Football &amp; Wellbeing">
+                <option>Walking Football (no running)</option>
+                <option>Mental Health / Wellbeing Sessions</option>
+                <option>Diabetic-Friendly Walking Football</option>
+              </optgroup>
+              <optgroup label="Junior Sessions (Under 18)">
+                <option>FA Wildcats (Girls 5–11)</option>
+                <option>FA Squad Girls Football (Girls 11–16)</option>
+                <option>Disney Shooting Stars (Girls 5–11)</option>
+                <option>Junior Mixed Sessions</option>
+              </optgroup>
+              <optgroup label="Disability Sessions">
+                <option>FA Comets (Pan-Disability, All Ages)</option>
+                <option>Disability Rec Centre (Ages 12–16)</option>
+              </optgroup>
+              <option>Not sure — tell me what's available</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl">Experience Level</label>
+            <select name="Experience Level" class="fsel">
+              <option value="">Select experience...</option>
+              <option>Complete beginner — never played</option>
+              <option>Played casually before</option>
+              <option>Played for a team before</option>
+              <option>Competitive player</option>
+              <option>Returning after illness / injury</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl">Any health conditions or special requirements? (optional)</label>
+            <input type="text" name="Health or Special Requirements" class="finp" placeholder="e.g. Type 2 diabetes, anxiety, wheelchair user, visual impairment...">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl">If enquiring for a child — Parent/Guardian Name</label>
+            <input type="text" name="Parent Guardian Name" class="finp" placeholder="Parent or guardian full name (required for under 18)">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl">Your Message or Questions</label>
+            <textarea name="Message" class="ftxt" placeholder="e.g. I'm 55 with Type 2 diabetes, is walking football right for me? When do sessions start?"></textarea>
+          </div>
+
+          <div class="note-box">
+            <strong>⚠️ Under 18?</strong> A parent or guardian must provide their name above and will be contacted to give consent before their child attends any session. All sessions involving children are fully safeguarded.
+          </div>
+
+          <div class="consent-row">
+            <input type="checkbox" name="Consent" id="consent" value="Yes — agreed to contact" required>
+            <label for="consent">I agree to be contacted by Tower Hamlets Football Development regarding my enquiry. I understand my details will be used only to respond to this enquiry. *</label>
+          </div>
+
+          <button type="submit" class="btn-t" style="width:100%">Send My Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL / CONTACT -->
+<div class="social-band fade">
+  <div class="wrap">
+    <h3>Connect With Us 📲</h3>
+    <p>Follow us on Instagram for session updates · Join the WhatsApp group · Email us directly</p>
+    <div class="social-btns">
+      <a href="https://www.instagram.com/th.football_devop/" target="_blank" class="ig-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @th.football_devop
+      </a>
+      <a href="https://chat.whatsapp.com/HP0UaZgoKKL0iBQPp57Ho6" target="_blank" class="wa-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Join WhatsApp Group
+      </a>
+      <a href="mailto:enquiry.davinchi@gmail.com" class="em-btn">
+        📧 enquiry.davinchi@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-logo">THFD<span>Tower Hamlets Football Development · EST 2026</span></div>
+    <ul class="ft-links">
+      <li><a href="#sessions">Sessions</a></li>
+      <li><a href="#credentials">Qualifications</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#enquiry">Enquire</a></li>
+      <li><a href="mailto:enquiry.davinchi@gmail.com">Email Us</a></li>
+    </ul>
+  </div>
+  <p class="ft-copy">
+    © 2026 Tower Hamlets Football Development · Registered with England Football CS100760<br>
+    Led by Toufik · UEFA C Licence Coach · Enhanced DBS · Fully Safeguarded<br>
+    All enquiries: <a href="mailto:enquiry.davinchi@gmail.com" style="color:var(--teal);">enquiry.davinchi@gmail.com</a> · Instagram: <a href="https://instagram.com/th.football_devop" target="_blank" style="color:var(--teal);">@th.football_devop</a>
+  </p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('up',scrollY>60));
+function toggleMob(){document.getElementById('mob').classList.toggle('on');}
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('in');});},{threshold:.06});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
