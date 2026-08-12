@@ -157,13 +157,19 @@ section{padding:6rem 2.5rem;}
 
 /* PRICING */
 #pricing{background:var(--bg2);}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;margin-top:2.5rem;}
-.price-card{background:var(--bg3);border:1px solid var(--bdr);border-radius:18px;padding:2rem;position:relative;overflow:hidden;}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.5rem;align-items:stretch;}
+.price-grid.secondary{grid-template-columns:repeat(2,1fr);margin-top:1.3rem;}
+.price-card{background:var(--bg3);border:1px solid var(--bdr);border-radius:18px;padding:2rem;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.price-card .p-list{flex:1 1 auto;}
+.price-card > .price-pill{align-self:flex-start;}
+@media(max-width:1000px){.price-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.price-grid,.price-grid.secondary{grid-template-columns:1fr;}}
 .price-card.hot{border-color:var(--teal);}
 .price-card.hot::before{content:'';position:absolute;top:0;left:0;right:0;height:160px;background:radial-gradient(ellipse at 50% 0%,rgba(62,201,218,.09) 0%,transparent 70%);}
 .price-pill{display:inline-block;font-size:.67rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1.3rem;position:relative;z-index:1;}
 .price-pill.main{background:var(--teal);color:var(--bg);}
 .price-pill.free{background:var(--bg2);color:var(--gray);border:1px solid var(--bdr);}
+.price-pill{white-space:nowrap;}
 .price-pill.walk{background:rgba(232,255,58,.15);color:var(--gold);}
 .price-pill.dis{background:rgba(160,100,255,.15);color:#c084fc;}
 .p-num{font-family:'Bebas Neue',sans-serif;line-height:1;position:relative;z-index:1;}
@@ -602,6 +608,8 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
         </ul>
         <a href="#enquiry" class="btn-t" style="width:100%;text-align:center;display:block">Sign Up Today</a>
       </div>
+    </div>
+    <div class="price-grid secondary">
       <div class="price-card fade d2">
         <div class="price-pill walk">Walking Football</div>
         <div class="p-num"><span class="p-free">Enquire<br>For Rate</span></div>
