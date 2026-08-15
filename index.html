@@ -80,20 +80,22 @@ nav.up{background:rgba(6,14,25,.95);backdrop-filter:blur(14px);padding:1rem 2.5r
 .area-list .ck{color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
 .area-need{margin-top:1.6rem;background:rgba(232,255,58,.05);border:1px solid rgba(232,255,58,.15);border-radius:10px;padding:1rem 1.2rem;font-size:.82rem;color:var(--gray);line-height:1.7;}
 .area-need strong{color:var(--gold);}
-.area-map{border-radius:16px;overflow:hidden;border:1px solid var(--bdr);position:relative;background:var(--bg3);min-height:340px;}
-.area-map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
+.area-map{border-radius:16px;overflow:hidden;border:1px solid var(--bdr);background:#fff;padding:.5rem;}
+.area-map img{width:100%;height:auto;display:block;border-radius:10px;}
+.area-cap{margin-top:.75rem;font-size:.72rem;color:var(--gray);line-height:1.6;text-align:center;}
 .area-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--teal);color:var(--teal);font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:100px;margin-bottom:.6rem;}
-@media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:2rem;}.area-map{min-height:280px;}.area-map iframe{min-height:280px;}}
+@media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:2rem;}}
 
 /* VERIFIED / LOGO BAR */
 .verify{background:var(--bg);padding:4rem 2.5rem;border-top:1px solid var(--bdr);}
 .verify-inner{max-width:1180px;margin:0 auto;text-align:center;}
 .verify-strip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4rem;margin-top:2.2rem;}
-.vlogo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.4rem 1.3rem;width:158px;height:130px;transition:border-color .2s,transform .2s;}
-.vlogo:hover{border-color:var(--teal);transform:translateY(-3px);}
-.vlogo .vmark{width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
-.vlogo .vname{font-size:.7rem;font-weight:700;letter-spacing:.5px;color:var(--white);text-align:center;line-height:1.3;}
-.vlogo .vsub{font-size:.6rem;color:var(--gray);text-align:center;letter-spacing:.5px;}
+.vlogo{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:1.15rem 1.25rem;width:176px;height:132px;transition:transform .2s,box-shadow .2s;}
+.vlogo:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.45);}
+.vlogo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}
+.vcreds{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.6rem;}
+.vcred{display:inline-flex;align-items:center;gap:.45rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:100px;padding:.5rem 1rem;font-size:.74rem;font-weight:600;color:var(--white);}
+.vcred span{color:var(--teal);}
 .verify-foot{margin-top:1.8rem;font-size:.78rem;color:var(--gray);}
 .verify-foot a{color:var(--teal);font-weight:600;text-decoration:none;}
 .verify-foot a:hover{text-decoration:underline;}
@@ -361,13 +363,12 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
         <strong>What's still missing:</strong> more girls' and women's slots, more disability-accessible venues, and more coaches covering the eastern side of the borough. If you can help fund a venue, volunteer, or refer a group who needs football but can't currently access it, get in touch below.
       </div>
     </div>
-    <div class="area-map fade d1">
-      <iframe
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Tower+Hamlets,+London&output=embed">
-      </iframe>
+    <div class="fade d1">
+      <div class="area-map">
+        <img src="assets/tower-hamlets-map.jpg" width="1058" height="1500" loading="lazy"
+             alt="Tower Hamlets income deprivation map (ONS income estimates 2020) showing deprivation quintiles across Bow, Whitechapel, Stepney and Poplar, alongside a ward map of the borough divided into the four NHS Communities Keeping Well quadrants.">
+      </div>
+      <p class="area-cap">Income deprivation across Tower Hamlets (darker&nbsp;=&nbsp;higher deprivation), and the borough's wards grouped into the four NHS <em>Communities Keeping Well</em> quadrants.<br>Source: ONS income estimates 2020, via London FA / England Football / London Sport.</p>
     </div>
   </div>
 </section>
@@ -906,46 +907,22 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
     <h2 class="sec-title fade" style="font-size:clamp(2rem,4vw,3rem);">Officially Recognised</h2>
     <p class="sec-desc fade" style="margin:0 auto;text-align:center;">Every badge below is a real, checkable accreditation. Search our registration number, CS100760, on the England Football website to verify us yourself.</p>
     <div class="verify-strip">
-      <div class="vlogo fade">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8FF3A" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 9.1 8 11 4.6-1.9 8-6 8-11V5l-8-3Z"/><path d="m8.6 11.8 2.3 2.3 4.5-4.5"/></svg></div>
-        <div class="vname">England Football</div>
-        <div class="vsub">Accredited Provider</div>
-      </div>
-      <div class="vlogo fade d1">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"/></svg></div>
-        <div class="vname">Just Play</div>
-        <div class="vsub">By England Football</div>
-      </div>
-      <div class="vlogo fade d1">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><path d="M12 3v18M4.5 8.5l15 7M19.5 8.5l-15 7" stroke-linecap="round"/></svg></div>
-        <div class="vname">FA Wildcats</div>
-        <div class="vsub">Girls' Football</div>
-      </div>
-      <div class="vlogo fade d2">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
-        <div class="vname">Squad Girls</div>
-        <div class="vsub">Girls' Football</div>
-      </div>
-      <div class="vlogo fade d2">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.6"><path d="M12 3 3 9l9 6 9-6-9-6Z"/><path d="M3 15l9 6 9-6"/></svg></div>
-        <div class="vname">FA Comets</div>
-        <div class="vsub">Disability Football</div>
-      </div>
-      <div class="vlogo fade d3">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8FF3A" stroke-width="1.6"><path d="M12 2l2.4 6.9L22 10l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.2L2 10l7.6-1.1L12 2Z"/></svg></div>
-        <div class="vname">Disney Shooting Stars</div>
-        <div class="vsub">By England Football</div>
-      </div>
-      <div class="vlogo fade d3">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 9.1 8 11 4.6-1.9 8-6 8-11V5l-8-3Z"/></svg></div>
-        <div class="vname">UEFA C Licence</div>
-        <div class="vsub">Coaching Qualification</div>
-      </div>
-      <div class="vlogo fade d3">
-        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h3"/></svg></div>
-        <div class="vname">Enhanced DBS</div>
-        <div class="vsub">Safeguarding Checked</div>
-      </div>
+      <div class="vlogo fade"><img src="assets/logo-england-football.png" alt="England Football" loading="lazy"></div>
+      <div class="vlogo fade"><img src="assets/logo-just-play.png" alt="Just Play by England Football" loading="lazy"></div>
+      <div class="vlogo fade d1"><img src="assets/logo-kickabout.png" alt="Just Play Kickabout by England Football" loading="lazy"></div>
+      <div class="vlogo fade d1"><img src="assets/logo-learn-to-play.png" alt="Just Play Learn To Play by England Football" loading="lazy"></div>
+      <div class="vlogo fade d2"><img src="assets/logo-wildcats.png" alt="FA Wildcats Girls' Football" loading="lazy"></div>
+      <div class="vlogo fade d2"><img src="assets/logo-squad-girls.png" alt="Squad Girls' Football" loading="lazy"></div>
+      <div class="vlogo fade d3"><img src="assets/logo-comets.png" alt="Comets Disability Football" loading="lazy"></div>
+      <div class="vlogo fade d3"><img src="assets/logo-made-for-this-game.png" alt="Made For This Game, England Football" loading="lazy"></div>
+    </div>
+    <div class="vcreds">
+      <span class="vcred fade"><span>&#10003;</span> UEFA C Licence Coach</span>
+      <span class="vcred fade"><span>&#10003;</span> Enhanced DBS Checked</span>
+      <span class="vcred fade d1"><span>&#10003;</span> FA Safeguarding Certified</span>
+      <span class="vcred fade d1"><span>&#10003;</span> FA First Aid in Football</span>
+      <span class="vcred fade d2"><span>&#10003;</span> Disability Football Qualified</span>
+      <span class="vcred fade d2"><span>&#10003;</span> Disney Shooting Stars Provider</span>
     </div>
     <p class="verify-foot">Registration <strong style="color:var(--white)">CS100760</strong> · <a href="https://www.englandfootball.com" target="_blank" rel="noopener">Verify on englandfootball.com →</a></p>
   </div>
