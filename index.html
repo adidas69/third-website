@@ -70,6 +70,34 @@ nav.up{background:rgba(6,14,25,.95);backdrop-filter:blur(14px);padding:1rem 2.5r
 .hero-tags{display:flex;gap:.6rem;margin-top:2rem;flex-wrap:wrap;}
 .htag{background:rgba(62,201,218,.08);border:1px solid var(--bdr);color:var(--teal);font-size:.72rem;font-weight:600;padding:.35rem .85rem;border-radius:100px;letter-spacing:1px;}
 
+/* WHERE WE WORK / AREA MAP */
+.area{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:5rem 2.5rem;}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.area-copy p{color:var(--gray);font-size:.95rem;line-height:1.85;margin-top:1.1rem;}
+.area-copy p strong{color:var(--white);}
+.area-list{list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.7rem;}
+.area-list li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;color:var(--gray);line-height:1.6;}
+.area-list .ck{color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
+.area-need{margin-top:1.6rem;background:rgba(232,255,58,.05);border:1px solid rgba(232,255,58,.15);border-radius:10px;padding:1rem 1.2rem;font-size:.82rem;color:var(--gray);line-height:1.7;}
+.area-need strong{color:var(--gold);}
+.area-map{border-radius:16px;overflow:hidden;border:1px solid var(--bdr);position:relative;background:var(--bg3);min-height:340px;}
+.area-map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
+.area-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--teal);color:var(--teal);font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:100px;margin-bottom:.6rem;}
+@media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:2rem;}.area-map{min-height:280px;}.area-map iframe{min-height:280px;}}
+
+/* VERIFIED / LOGO BAR */
+.verify{background:var(--bg);padding:4rem 2.5rem;border-top:1px solid var(--bdr);}
+.verify-inner{max-width:1180px;margin:0 auto;text-align:center;}
+.verify-strip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4rem;margin-top:2.2rem;}
+.vlogo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.4rem 1.3rem;width:158px;height:130px;transition:border-color .2s,transform .2s;}
+.vlogo:hover{border-color:var(--teal);transform:translateY(-3px);}
+.vlogo .vmark{width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
+.vlogo .vname{font-size:.7rem;font-weight:700;letter-spacing:.5px;color:var(--white);text-align:center;line-height:1.3;}
+.vlogo .vsub{font-size:.6rem;color:var(--gray);text-align:center;letter-spacing:.5px;}
+.verify-foot{margin-top:1.8rem;font-size:.78rem;color:var(--gray);}
+.verify-foot a{color:var(--teal);font-weight:600;text-decoration:none;}
+.verify-foot a:hover{text-decoration:underline;}
+
 /* TRUST STRIP */
 .sess-cta{display:block;text-align:center;margin-top:1rem;padding:.72rem 1rem;border-radius:8px;font-size:.8rem;font-weight:700;text-decoration:none;letter-spacing:.4px;transition:all .2s;}
 .sess-cta.book{background:var(--teal);color:#04121b;}
@@ -311,6 +339,35 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
       <span class="htag">👨 Men &amp; Boys</span>
       <span class="htag">🛡️ England Football Accredited</span>
       <span class="htag">🏆 UEFA C Coach</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE WORK / AREA MAP -->
+<section class="area" id="area">
+  <div class="wrap area-grid">
+    <div class="area-copy fade">
+      <span class="area-tag">📍 Where We Work</span>
+      <h2 class="sec-title" style="font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:.4rem;">Serving Tower Hamlets</h2>
+      <p>We run sessions across <strong>Tower Hamlets, E1 &amp; E3</strong>, including Bethnal Green, Bow, Mile End, Whitechapel, Stepney, Poplar, Limehouse, Canary Wharf and the Isle of Dogs. Tower Hamlets has some of the highest levels of deprivation in London, and some of the lowest access to organised football, especially for girls, women, disabled players and under-represented communities.</p>
+      <p>Our sessions are placed deliberately in the areas with the least existing provision, aligned with the four quadrants of the NHS "Communities Keeping Well" framework, so the players who need it most can actually get to a pitch.</p>
+      <ul class="area-list">
+        <li><span class="ck">✓</span>Currently running Wildcats, Squad Girls, Just Play and walking football sessions in Bow, Mile End, Limehouse and the Isle of Dogs</li>
+        <li><span class="ck">✓</span>Women's sessions based at St Paul's Way School, E3 4FT</li>
+        <li><span class="ck">✓</span>Priority focus on under-represented communities, including faith groups and residents not currently accessing football</li>
+        <li><span class="ck">✓</span>Actively expanding into Bethnal Green, Whitechapel, Shadwell, Poplar and Canary Wharf as demand grows</li>
+      </ul>
+      <div class="area-need">
+        <strong>What's still missing:</strong> more girls' and women's slots, more disability-accessible venues, and more coaches covering the eastern side of the borough. If you can help fund a venue, volunteer, or refer a group who needs football but can't currently access it, get in touch below.
+      </div>
+    </div>
+    <div class="area-map fade d1">
+      <iframe
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Tower+Hamlets,+London&output=embed">
+      </iframe>
     </div>
   </div>
 </section>
@@ -672,7 +729,7 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
   </div>
 </section>
 
-<!-- ENQUIRY FORM: all submissions go to enquiry.davinchi@gmail.com via FormSubmit -->
+<!-- ENQUIRY FORM: all submissions go to CoachToufi@towerhamletsfootball.co.uk via FormSubmit -->
 <section id="enquiry">
   <div class="wrap">
     <div class="enq-grid">
@@ -688,13 +745,13 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
           <div class="enq-perk"><span class="jc">✓</span><span>Concession rates available, just ask</span></div>
         </div>
         <div class="email-box">
-          <p>📧 All enquiries go directly to <strong>enquiry.davinchi@gmail.com</strong><br>You can also email Toufik directly at any time.</p>
+          <p>📧 All enquiries go directly to <strong>CoachToufi@towerhamletsfootball.co.uk</strong><br>You can also email Toufik directly at any time.</p>
         </div>
       </div>
 
-      <!-- FORMSUBMIT FORM: sends directly to enquiry.davinchi@gmail.com -->
+      <!-- FORMSUBMIT FORM: sends directly to CoachToufi@towerhamletsfootball.co.uk -->
       <div class="fade d1">
-        <form class="enq-form" action="https://formsubmit.co/enquiry.davinchi@gmail.com" method="POST">
+        <form class="enq-form" action="https://formsubmit.co/CoachToufi@towerhamletsfootball.co.uk" method="POST">
 
           <!-- FormSubmit config -->
           <input type="hidden" name="_subject" value="New Enquiry: Tower Hamlets Football Development">
@@ -835,12 +892,64 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
       <a href="https://forms.gle/Qvc1Uw8RKWfzqbwD7" target="_blank" rel="noopener" class="em-btn">
         📝 Sign Up Registration Form
       </a>
-      <a href="mailto:enquiry.davinchi@gmail.com" class="em-btn">
-        📧 enquiry.davinchi@gmail.com
+      <a href="mailto:CoachToufi@towerhamletsfootball.co.uk" class="em-btn">
+        📧 CoachToufi@towerhamletsfootball.co.uk
       </a>
     </div>
   </div>
 </div>
+
+<!-- VERIFIED / LOGO BAR -->
+<section class="verify" id="verified">
+  <div class="verify-inner">
+    <p class="lbl fade" style="display:block;">Verify Our Accreditation</p>
+    <h2 class="sec-title fade" style="font-size:clamp(2rem,4vw,3rem);">Officially Recognised</h2>
+    <p class="sec-desc fade" style="margin:0 auto;text-align:center;">Every badge below is a real, checkable accreditation. Search our registration number, CS100760, on the England Football website to verify us yourself.</p>
+    <div class="verify-strip">
+      <div class="vlogo fade">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8FF3A" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 9.1 8 11 4.6-1.9 8-6 8-11V5l-8-3Z"/><path d="m8.6 11.8 2.3 2.3 4.5-4.5"/></svg></div>
+        <div class="vname">England Football</div>
+        <div class="vsub">Accredited Provider</div>
+      </div>
+      <div class="vlogo fade d1">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"/></svg></div>
+        <div class="vname">Just Play</div>
+        <div class="vsub">By England Football</div>
+      </div>
+      <div class="vlogo fade d1">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><path d="M12 3v18M4.5 8.5l15 7M19.5 8.5l-15 7" stroke-linecap="round"/></svg></div>
+        <div class="vname">FA Wildcats</div>
+        <div class="vsub">Girls' Football</div>
+      </div>
+      <div class="vlogo fade d2">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
+        <div class="vname">Squad Girls</div>
+        <div class="vsub">Girls' Football</div>
+      </div>
+      <div class="vlogo fade d2">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.6"><path d="M12 3 3 9l9 6 9-6-9-6Z"/><path d="M3 15l9 6 9-6"/></svg></div>
+        <div class="vname">FA Comets</div>
+        <div class="vsub">Disability Football</div>
+      </div>
+      <div class="vlogo fade d3">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8FF3A" stroke-width="1.6"><path d="M12 2l2.4 6.9L22 10l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.2L2 10l7.6-1.1L12 2Z"/></svg></div>
+        <div class="vname">Disney Shooting Stars</div>
+        <div class="vsub">By England Football</div>
+      </div>
+      <div class="vlogo fade d3">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 9.1 8 11 4.6-1.9 8-6 8-11V5l-8-3Z"/></svg></div>
+        <div class="vname">UEFA C Licence</div>
+        <div class="vsub">Coaching Qualification</div>
+      </div>
+      <div class="vlogo fade d3">
+        <div class="vmark"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3EC9DA" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h3"/></svg></div>
+        <div class="vname">Enhanced DBS</div>
+        <div class="vsub">Safeguarding Checked</div>
+      </div>
+    </div>
+    <p class="verify-foot">Registration <strong style="color:var(--white)">CS100760</strong> · <a href="https://www.englandfootball.com" target="_blank" rel="noopener">Verify on englandfootball.com →</a></p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -854,13 +963,13 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:3rem 2.5rem;
       <li><a href="#enquiry">Enquire</a></li>
       <li><a href="https://forms.gle/Qvc1Uw8RKWfzqbwD7" target="_blank" rel="noopener">Sign Up Form</a></li>
       <li><a href="https://wa.me/447984611953" target="_blank" rel="noopener">WhatsApp</a></li>
-      <li><a href="mailto:enquiry.davinchi@gmail.com">Email Us</a></li>
+      <li><a href="mailto:CoachToufi@towerhamletsfootball.co.uk">Email Us</a></li>
     </ul>
   </div>
   <p class="ft-copy">
     © 2026 Tower Hamlets Football Development · England Football Accredited Session Provider · CS100760<br>
     Led by Toufik · UEFA C Licence Coach · Enhanced DBS · Fully Safeguarded<br>
-    All enquiries: <a href="mailto:enquiry.davinchi@gmail.com" style="color:var(--teal);">enquiry.davinchi@gmail.com</a> · Instagram: <a href="https://instagram.com/th.football_devop" target="_blank" style="color:var(--teal);">@th.football_devop</a><br>
+    All enquiries: <a href="mailto:CoachToufi@towerhamletsfootball.co.uk" style="color:var(--teal);">CoachToufi@towerhamletsfootball.co.uk</a> · Instagram: <a href="https://instagram.com/th.football_devop" target="_blank" style="color:var(--teal);">@th.football_devop</a><br>
     <a href="https://forms.gle/Qvc1Uw8RKWfzqbwD7" target="_blank" rel="noopener" style="color:var(--teal);">Sign up here</a> · <a href="https://wa.me/447984611953" target="_blank" rel="noopener" style="color:var(--teal);">WhatsApp 07984 611953</a>
   </p>
 </footer>
